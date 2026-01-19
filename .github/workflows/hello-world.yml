@@ -13,17 +13,6 @@ on:
 
 jobs:
 
-  hello-job1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: 
-        run: sleep 600
-      - name: Echo text
-        run: |
-          echo "Hello, world! Job 2"
-          date -u
-        timeout-minutes: 2
-
   hello-job2:
     runs-on: ubuntu-latest
     steps:
