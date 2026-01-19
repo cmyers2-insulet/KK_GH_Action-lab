@@ -2,9 +2,13 @@
 name: hello-world
 
 on:
-  schedule:
-    - cron: "55 1 * * *"
-  workflow_dispatch:
+  #push
+  
+ schedule:
+    - cron: "0 * * * *"     # Every hour at minute 0 (UTC)
+    - cron: "30 2 * * *"    # Every day at 02:30 UTC
+
+  #workflow_dispatch:
 
 jobs:
   hello-job:
