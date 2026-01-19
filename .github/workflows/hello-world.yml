@@ -4,27 +4,32 @@ name: hello-world
 on:
   push:
   workflow_dispatch:
-  
- #schedule:
-    #- cron: "0 * * * *"     # Every hour at minute 0 (UTC)
-    #- cron: "30 2 * * *"    # Every day at 02:30 UTC
-
-  #workflow_dispatch:
+  # If you want the schedules back, just uncomment:
+  # schedule:
+  #   - cron: "0 * * * *"     # Every hour (UTC)
+  #   - cron: "30 2 * * *"    # Daily at 02:30 UTC
 
 jobs:
-
-  hello-job2:
+  hello:
     runs-on: ubuntu-latest
-    steps:
-      - name: Echo text
-        run: |
-          echo "Hello, world! Job 2"
-          date -u
+    strategy:
+      matrix:
+        job_name: [job2, job3]
+        message:
+          - "Hello, world! Job 2"
+          - "Hello, world! Job 3"
+      # If you want to ensure unique pairs (job2->msg2, job3->msg3), use include below instead of the two lists above.
+      # Or, remove the two lists above and use this include block:
+      # include:
+      #   - job_name: job2
+      #     message: "Hello, world! Job 2"
+      #   - job_name: job3
+      #     message: "Hello, world! Job 3"
 
-  hello-job3:
-    runs-on: ubuntu-latest
+    name: hello-${{ matrix.job_name }}
+
     steps:
-      - name: Echo text
+      - name: Echo text (${{ matrix.job_name }})
         run: |
-          echo "Hello, world! Job 2"
+          echo "${{ matrix.message }}"
           date -u
