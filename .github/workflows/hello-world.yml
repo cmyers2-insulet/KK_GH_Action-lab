@@ -12,10 +12,27 @@ on:
   #workflow_dispatch:
 
 jobs:
-  hello-job:
+
+  hello-job1:
     runs-on: ubuntu-latest
     steps:
       - name: Echo text
         run: |
-          echo "Hello, world!"
+          echo "Hello, world! Job 2"
+          date -u
+
+  hello-job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo text
+        run: |
+          echo "Hello, world! Job 2"
+          date -u
+
+  hello-job3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo text
+        run: |
+          echo "Hello, world! Job 2"
           date -u
