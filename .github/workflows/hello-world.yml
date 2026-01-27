@@ -21,7 +21,7 @@ jobs:
         run: |
           echo "Hello World"
           date -u
-          sleep 30
+          sleep 5
 
   phase_2:
     runs-on: ubuntu-latest
@@ -40,5 +40,8 @@ jobs:
     steps:
       - name: Echo/print text 
         run: |
+          python3 -V
+          sudo apt update
+          sudo apt install python3
           print("Hello Phase 3")
           date -u
