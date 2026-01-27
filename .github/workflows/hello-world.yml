@@ -21,3 +21,14 @@ jobs:
         run: |
           echo "Hello World"
           date -u
+          sleep 500
+
+  phase_2:
+    runs-on: ubuntu-latest
+    needs: phase_1
+   
+    steps:
+      - name: Echo text 
+        run: |
+          echo "Hello Phase 2"
+          date -u
